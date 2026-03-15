@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emergency Navigation | E-Blood</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map { height: 500px; width: 100%; border-radius: 20px; margin-top: 20px; border: 2px solid #ff4d6d; }
+        .nav-overlay {
+            position: absolute; top: 30px; left: 30px; z-index: 1000;
+            background: rgba(15, 23, 42, 0.9); padding: 20px; border-radius: 15px;
+            border: 1px solid #ff4d6d; color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay">
+        <h3 style="color: #ff4d6d;">Hospital Located</h3>
+        <p id="hDistance">Calculating distance...</p>
+        <button class="sos-btn-small" onclick="window.location.href='dashboard.html'" style="margin-top:10px; background:#334155;">BACK</button>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Default Hospital Location (Saveetha Medical College area)
+        const hospitalLat = 13.0280;
+        const hospitalLon = 80.0440;
+
+        // Initialize Map
+        const map = L.map('map').setView([hospitalLat, hospitalLon], 14);
+
+        // Add Dark Mode Map Tiles (Standard OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Add Hospital Marker
+        const hospitalIcon = L.icon({
+            iconUrl: 'https://cdn-icons-png.flaticon.com/512/4332/4332901.png',
+            iconSize: [40, 40]
+        });
+        L.marker([hospitalLat, hospitalLon], {icon: hospitalIcon}).addTo(map)
+            .bindPopup('<b>Saveetha Medical Centre</b><br>Emergency Entry').openPopup();
+
+        // Get Donor Location from LocalStorage
+        const donorData = JSON.parse(localStorage.getItem('currentUser'));
+        
+        // Simulate Donor Marker (In a real app, we'd use navigator.geolocation)
+        // For demo, we place them slightly away
+        const donorLat = hospitalLat + 0.005; 
+        const donorLon = hospitalLon + 0.005;
+
+        L.circle([donorLat, donorLon], { color: '#4ade80', fillColor: '#4ade80', fillOpacity: 0.5, radius: 100 })
+            .addTo(map).bindPopup('Your Current Location');
+
+        // Draw a simple line representing the path
+        const path = L.polyline([[donorLat, donorLon], [hospitalLat, hospitalLon]], {color: '#ff4d6d', weight: 5, dashArray: '10, 10'}).addTo(map);
+        
+        document.getElementById('hDistance').innerText = "Distance: 1.2 km (4 mins)";
+    </script>
+</body>
+</html>

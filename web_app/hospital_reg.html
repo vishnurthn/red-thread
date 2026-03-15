@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Onboarding | E-Blood Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .file-input-wrapper {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .file-input-wrapper:hover { border-color: #ff4d6d; background: rgba(255, 77, 109, 0.05); }
+        .helper-text { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
+        input:invalid { border-color: #ef4444; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h2 style="color: #ff4d6d; margin-bottom: 10px;">Hospital Administration</h2>
+        <p style="color: #94a3b8; margin-bottom: 30px;">Register your facility to the E-Blood emergency network.</p>
+
+        <form id="hospitalForm">
+            <div class="form-group">
+                <label>Hospital Name</label>
+                <input type="text" id="hName" required placeholder="Saveetha Medical Centre">
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Official Contact</label>
+                    <input type="tel" id="hPhone" required placeholder="+91 44 XXXX XXXX">
+                </div>
+                <div class="form-group">
+                    <label>Pincode</label>
+                    <input type="text" id="hPincode" required placeholder="602105">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>License Number</label>
+                <input type="text" id="hLicense" required 
+                       pattern="\[[A-Z]{2}/[A-Z]{2}/\d{4}/\d{5}\]" 
+                       placeholder="[TN/CE/2024/12345]">
+                <p class="helper-text">Format: [State/Dist/Year/Serial]</p>
+            </div>
+
+            <div class="form-group">
+                <label>Full Address</label>
+                <textarea id="hAddress" rows="2" placeholder="Street, Area, City"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Official Website</label>
+                <input type="url" id="hWebsite" placeholder="https://www.hospital.com">
+            </div>
+
+            <div class="form-group">
+                <label>Govt Approval Certificate (PDF)</label>
+                <div class="file-input-wrapper" onclick="document.getElementById('hCert').click()">
+                    <span id="fileLabel">📄 Upload PDF Document</span>
+                    <input type="file" id="hCert" accept=".pdf" hidden onchange="updateFileName(this)">
+                </div>
+            </div>
+
+            <div class="checkbox-group" style="display: flex; align-items: flex-start; gap: 10px; margin-top: 20px;">
+                <input type="checkbox" id="hTerms" required style="width: auto; margin-top: 4px;">
+                <label style="font-size: 0.8rem; color: #94a3b8;">
+                    I certify that this facility is a government-recognized medical institution and all provided documents are authentic.
+                </label>
+            </div>
+
+            <button type="submit" class="sos-btn-large" style="width: 100%; margin-top: 30px;">COMPLETE VERIFICATION</button>
+        </form>
+    </div>
+
+    <script>
+        function updateFileName(input) {
+            const label = document.getElementById('fileLabel');
+            label.innerText = input.files[0] ? `Selected: ${input.files[0].name}` : "📄 Upload PDF Document";
+        }
+
+        document.getElementById('hospitalForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            // Collect Data
+            const hospitalData = {
+                name: document.getElementById('hName').value,
+                license: document.getElementById('hLicense').value,
+                pincode: document.getElementById('hPincode').value
+            };
+
+            // Save for the Hospital Dashboard session
+            localStorage.setItem('hospitalSession', JSON.stringify(hospitalData));
+
+            // Redirect to the Hospital Dashboard (index.html)
+            alert("Hospital Verified Successfully!");
+            window.location.href = 'index.html';
+        };
+    </script>
+</body>
+</html>
