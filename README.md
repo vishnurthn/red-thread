@@ -69,3 +69,6 @@ Open register.html in a separate window to join as a donor.
 
 Trigger the SOS from the hospital dashboard and watch the live alert appear on the donor portal.
 
+## 📺 Project Demo
+[![E-Blood Demo Video](https://ibb.co/d0t5QSC8)](https://youtu.be/o0haNG5YseM)
+*Click the image above to watch the 3-minute project walkthrough.*
