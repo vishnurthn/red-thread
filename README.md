@@ -49,7 +49,7 @@ e-BloodBank/
 Clone the repository:
 ```
 Bash
-git clone https://github.com/vishnurthn/e-BloodBank.git
+git clone https://github.com/vishnurthn/red-thread
 ```
 
 Initialize the Backend:
