@@ -1,5 +1,5 @@
-## 🩸 E-Blood: Smart Emergency Blood Synchronization
-E-Blood is a full-stack emergency response system designed to minimize the "Critical Time" delay. It connects hospitals with eligible donors in real-time using location-based geocoding and automated search expansion.
+## 🩸 RED-THREAD: Smart Emergency Blood Synchronization
+RED-THREAD is a full-stack emergency response system designed to minimize the "Critical Time" delay. It connects hospitals with eligible donors in real-time using location-based geocoding and automated search expansion.
 
 ## 🌟 Key Innovations
 Dual-Portal Ecosystem: Separate, synchronized interfaces for Medical Administrators and Donors.
@@ -69,5 +69,5 @@ Open register.html in a separate window to join as a donor.
 Trigger the SOS from the hospital dashboard and watch the live alert appear on the donor portal.
 
 ## 📺 Project Demo
-[![E-Blood Demo Video](https://ibb.co/d0t5QSC8)](https://youtu.be/o0haNG5YseM)
+[![RED-THREAD Demo Video](https://ibb.co/d0t5QSC8)](https://youtu.be/o0haNG5YseM)
 *Click the image above to watch the 3-minute project walkthrough.*
