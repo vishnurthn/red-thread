@@ -34,7 +34,6 @@ Hardware Integration: C++ (Storage monitoring simulation).
 e-BloodBank/
 ├── backend/
 │   ├── app.py              # Main Flask Server & API Logic
-│   └── requirements.txt    # Python Dependencies
 ├── frontend/
 │   ├── hospital_reg.html   # Admin Onboarding
 │   ├── index.html          # Hospital SOS Dashboard
