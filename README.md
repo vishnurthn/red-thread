@@ -69,5 +69,5 @@ Open register.html in a separate window to join as a donor.
 Trigger the SOS from the hospital dashboard and watch the live alert appear on the donor portal.
 
 ## 📺 Project Demo
-[![RED-THREAD Demo Video](https://ibb.co/d0t5QSC8)](https://youtu.be/o0haNG5YseM)
+[![RED-THREAD Demo Video](https://ibb.co/d0t5QSC8)](https://drive.google.com/file/d/1tEaUjW-tSzmJSax7t6NmxuBT0-KO9y4k/view?usp=sharing)
 *Click the image above to watch the 3-minute project walkthrough.*
